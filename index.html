@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Metadatos -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empresa de Ingeniería Ambiental y Tecnológica</title>
+    <!-- Enlace a las fuentes de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Importar las fuentes "Montserrat" y "Open Sans" -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Enlace a la hoja de estilos CSS externa -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Encabezado (Header) -->
+    <header>
+        <div class="container">
+            <!-- Icono del menú para dispositivos móviles -->
+            <div class="menu-icon" tabindex="0" role="button" aria-label="Menú de navegación">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="logo">
+                <!-- Logo de la empresa -->
+                <img src="logo_oficial_150x50px.png" alt="Logo de la Empresa" width="150" height="50">
+            </div>
+            <nav>
+                <ul role="navigation">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#proyectos">Proyectos</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sección de Inicio -->
+    <section id="inicio" class="inicio">
+        <div class="fondo-inicio">
+            <h1>¡Bienvenido a Mayplan Technologies!</h1>
+            <p>Destacamos por nuestra misión y visión enfocadas en el compromiso con el medio ambiente y la innovación tecnológica.</p>
+        </div>
+    </section>
+
+    <!-- Sección de Servicios -->
+    <section id="servicios" class="servicios">
+        <div class="container">
+            <h2>Nuestros Servicios</h2>
+            <ul>
+                <li>
+                    <!-- Agregar ícono -->
+                    <img src="monitoreos_50x50px.png" alt="Monitoreos Ambientales" width="50" height="50">
+                    <h3>Monitoreos Ambientales</h3>
+                    <p>Calidad de agua, aire, ruido ambiental y suelos.</p>
+                </li>
+                <li>
+                    <img src="recursos_50x50px.png" alt="Recursos Naturales" width="50" height="50">
+                    <h3>Recursos Naturales</h3>
+                    <p>Planes de reforestación, autorizaciones de extracción de material de acarreo, de uso de agua, desmonte, entre otros.</p>
+                </li>
+                <li>
+                    <img src="gestion_amb_terr_50x50px.png" alt="Instrumentos de Gestión Ambiental y Territorial" width="50" height="50">
+                    <h3>Instrumentos de Gestión Ambiental y Territorial</h3>
+                    <p>Diagnóstico urbano distrital, planes de acondicionamiento territorial, desarrollo urbano y específico.</p>
+                    <p>Estudios ambientales e instrumentos de gestión ambiental complementarios.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Sección de Proyectos -->
+    <section id="proyectos" class="proyectos">
+        <div class="container">
+            <h2>Proyectos Destacados</h2>
+            <div class="carrusel">
+                <div class="slides">
+                    <!-- Proyecto 1 -->
+                    <div class="proyecto">
+                        <img src="monitoreo_agua_consumo_humano.jpg" alt="Proyecto 1" width="600" height="400">
+                        <p>Monitoreo de calidad de agua para consumo humano</p>
+                    </div>
+                    <!-- Proyecto 2 -->
+                    <div class="proyecto">
+                        <img src="aguaa_superficial.jpg" alt="Proyecto 2" width="600" height="400">
+                        <p>Monitoreo de calidad de agua superficial</p>
+                    </div>
+                    <!-- Proyecto 3 -->
+                    <div class="proyecto">
+                        <img src="efluente_r_s.jpg" alt="Proyecto 3" width="600" height="400">
+                        <p>Monitoreo de efluentes</p>
+                    </div>
+                    <!-- Proyecto 4 -->
+                    <div class="proyecto">
+                        <img src="ruido_amb.jpg" alt="Proyecto 4" width="600" height="400">
+                        <p>Monitoreo de ruido ambiental</p>
+                    </div>
+                    <!-- Proyecto 5 -->
+                    <div class="proyecto">
+                        <img src="calidad_suelo.jpg" alt="Proyecto 5" width="600" height="400">
+                        <p>Monitoreo de calidad de suelos</p>
+                    </div>
+                    <!-- Proyecto 6 -->
+                    <div class="proyecto">
+                        <img src="Linea_base_proyecto.jpg" alt="Proyecto 6" width="600" height="400">
+                        <p>Levantamiento de información de Línea Base para Estudios Ambientales</p>
+                    </div>
+                </div>
+                <!-- Controles del carrusel -->
+                <button class="prev" aria-label="Anterior">&#10094;</button>
+                <button class="next" aria-label="Siguiente">&#10095;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Nosotros -->
+    <section id="nosotros" class="nosotros">
+        <div class="container">
+            <h2>Sobre Nosotros</h2>
+            <p>Empresa comprometida con el desarrollo sostenible. Consideramos que la tecnología es clave para la buena gestión ambiental.</p>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section id="contacto" class="contacto">
+        <div class="container">
+            <h2>Contáctanos</h2>
+            <!-- Descripción breve -->
+            <p class="contacto-descripcion">Si tienes alguna pregunta o necesitas más información sobre nuestros servicios, no dudes en ponerte en contacto.</p>
+            <!-- Enlace para abrir Gmail directamente -->
+            <div class="contacto-email">
+                <p>Puedes enviarnos un correo electrónico a:</p>
+                <a href="#" id="enlace-gmail">
+                    <img src="gmail.png" alt="Correo Electrónico" width="40" height="40">
+                    <span>mayplantech@gmail.com</span>
+                </a>
+            </div>
+            <!-- Información de contacto adicional -->
+            <div class="informacion-contacto">
+                <p><strong>Dirección:</strong> Rioja, Rioja, San Martín.</p>
+                <p><strong>Teléfono:</strong> 936 669 227</p>
+                <p>Síguenos en:</p>
+                <div class="redes-sociales">
+                    <a href="https://www.linkedin.com/company/mayplan-technologies-e-i-r-l/?viewAsMember=true" target="_blank"><img src="Logo-Linkedin.png" alt="LinkedIn" width="40" height="40"></a>
+                    <!-- Agrega más iconos de redes sociales si lo deseas -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de Página (Footer) -->
+    <footer>
+        <div class="container">
+            <div class="enlaces">
+                <a href="#inicio">Inicio</a> |
+                <a href="#servicios">Servicios</a> |
+                <a href="#proyectos">Proyectos</a> |
+                <a href="#nosotros">Nosotros</a> |
+                <a href="#contacto">Contacto</a>
+            </div>
+            <p>&copy; 2024 Mayplan Technologies E.I.R.L. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Enlace al archivo JavaScript -->
+    <script src="scripts.js"></script>
+</body>
+</html>
