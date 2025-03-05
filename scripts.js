@@ -1,39 +1,29 @@
-// script.js
-
 document.addEventListener('DOMContentLoaded', function() {
-
     /* ====================================
        1. Menú de Navegación Desplegable
     ==================================== */
-
-    // Selecciona el ícono del menú y el menú de navegación
     var menuIcon = document.querySelector('.menu-icon');
     var navMenu = document.querySelector('header nav ul');
 
-    // Función para mostrar u ocultar el menú
     function toggleMenu() {
         navMenu.classList.toggle('show');
         menuIcon.classList.toggle('active');
     }
 
-    // Mostrar/ocultar menú al hacer clic en el ícono
     menuIcon.addEventListener('click', function(event) {
         event.stopPropagation();
         toggleMenu();
     });
 
-    // Evitar que el menú se cierre al hacer clic dentro de él
     navMenu.addEventListener('click', function(event) {
         event.stopPropagation();
     });
 
-    // Ocultar menú al hacer clic fuera de él
     document.addEventListener('click', function() {
         navMenu.classList.remove('show');
         menuIcon.classList.remove('active');
     });
 
-    // Cerrar el menú al hacer clic en un enlace
     var navLinks = document.querySelectorAll('header nav ul li a');
     navLinks.forEach(function(link) {
         link.addEventListener('click', function() {
@@ -45,7 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
     /* ====================================
        2. Carrusel de Imágenes en Proyectos
     ==================================== */
-
     var slideIndex = 0;
     var slides = document.querySelector('.slides');
     var slideItems = document.querySelectorAll('.slides .proyecto');
@@ -53,10 +42,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var prevButton = document.querySelector('.prev');
     var nextButton = document.querySelector('.next');
 
-    // Mostrar la diapositiva inicial
-    showSlide(slideIndex);
-
-    // Función para mostrar la diapositiva actual
     function showSlide(index) {
         if (index >= totalSlides) {
             slideIndex = 0;
@@ -69,36 +54,38 @@ document.addEventListener('DOMContentLoaded', function() {
         slides.style.transform = 'translateX(' + offset + '%)';
     }
 
-    // Eventos para los botones de navegación
+    // Mostrar la primera diapositiva
+    showSlide(slideIndex);
+
+    // Navegación manual
     nextButton.addEventListener('click', function() {
-        showSlide(slideIndex + 1);
+        showSlide(++slideIndex);
     });
-
     prevButton.addEventListener('click', function() {
-        showSlide(slideIndex - 1);
+        showSlide(--slideIndex);
     });
 
-    // Reproducción automática
+    // Ajustar el intervalo a 7s para que no pase tan rápido
     var slideInterval = setInterval(function() {
-        showSlide(slideIndex + 1);
-    }, 5000);
+        slideIndex++;
+        showSlide(slideIndex);
+    }, 7000);
 
-    // Pausar reproducción automática al interactuar
+    // Pausar reproducción automática al interactuar con el mouse
     slides.addEventListener('mouseenter', function() {
         clearInterval(slideInterval);
     });
-
     slides.addEventListener('mouseleave', function() {
         slideInterval = setInterval(function() {
-            showSlide(slideIndex + 1);
-        }, 5000);
+            slideIndex++;
+            showSlide(slideIndex);
+        }, 7000);
     });
 
-    // Variables para el control táctil
+    // Control táctil para dispositivos móviles
     var startX = 0;
     var isDragging = false;
 
-    // Eventos táctiles para dispositivos móviles
     slides.addEventListener('touchstart', function(event) {
         isDragging = true;
         startX = event.touches[0].clientX;
@@ -108,15 +95,13 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!isDragging) return;
         var currentX = event.touches[0].clientX;
         var diffX = startX - currentX;
-
-        // Umbral para considerar el gesto como un deslizamiento
         if (Math.abs(diffX) > 50) {
             if (diffX > 0) {
-                // Deslizar a la izquierda, mostrar siguiente diapositiva
-                showSlide(slideIndex + 1);
+                // Deslizar a la izquierda
+                showSlide(++slideIndex);
             } else {
-                // Deslizar a la derecha, mostrar diapositiva anterior
-                showSlide(slideIndex - 1);
+                // Deslizar a la derecha
+                showSlide(--slideIndex);
             }
             isDragging = false;
         }
@@ -129,15 +114,12 @@ document.addEventListener('DOMContentLoaded', function() {
     /* ====================================
        3. Botón "Volver al Inicio"
     ==================================== */
-
-    // Crear el botón
     var volverArribaBtn = document.createElement('button');
     volverArribaBtn.innerText = '↑';
     volverArribaBtn.id = 'volver-arriba';
     volverArribaBtn.setAttribute('aria-label', 'Volver al Inicio');
     document.body.appendChild(volverArribaBtn);
 
-    // Mostrar/ocultar el botón al hacer scroll
     window.addEventListener('scroll', function() {
         if (window.scrollY > 300) {
             volverArribaBtn.classList.add('show');
@@ -146,7 +128,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Desplazamiento suave hacia arriba al hacer clic
     volverArribaBtn.addEventListener('click', function() {
         window.scrollTo({
             top: 0,
@@ -157,11 +138,8 @@ document.addEventListener('DOMContentLoaded', function() {
     /* ====================================
        4. Animaciones en la Carga de Secciones
     ==================================== */
-
-    // Seleccionar todas las secciones que se animarán
     var secciones = document.querySelectorAll('section');
 
-    // Función para verificar si la sección está en el viewport
     function verificarVisibilidad() {
         secciones.forEach(function(seccion) {
             var posicion = seccion.getBoundingClientRect();
@@ -171,43 +149,58 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Ejecutar al cargar y al hacer scroll
     window.addEventListener('scroll', verificarVisibilidad);
     window.addEventListener('load', verificarVisibilidad);
 
     /* ====================================
        5. Manejo de Eventos y Accesibilidad
     ==================================== */
-
-    // Asegurar que el menú sea accesible con el teclado
     menuIcon.setAttribute('tabindex', '0');
     menuIcon.setAttribute('role', 'button');
     menuIcon.setAttribute('aria-label', 'Menú de navegación');
 
-    // Evento de teclado para el ícono del menú
     menuIcon.addEventListener('keypress', function(event) {
         if (event.key === 'Enter' || event.key === ' ') {
             toggleMenu();
         }
     });
 
-    // Agregar roles y descripciones ARIA donde sea necesario
     navMenu.setAttribute('role', 'navigation');
-
 });
 
-    /* ====================================
-       6. Enlace para Abrir Gmail Directamente
-    ==================================== */
+/* ====================================
+   6. Formulario de Contacto (envío asíncrono)
+==================================== */
+var contactForm = document.getElementById('contact-form');
+var mensajeExito = document.getElementById('mensajeExito');
 
-    var enlaceGmail = document.getElementById('enlace-gmail');
+contactForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Evita la recarga de página
+    var formData = new FormData(contactForm);
 
-    enlaceGmail.addEventListener('click', function(event) {
-        event.preventDefault();
-
-        var email = 'mayplantech@gmail.com';
-        var urlGmail = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(email);
-
-        // Abrir Gmail en una nueva pestaña
-        window.open(urlGmail, '_blank');
+    fetch(contactForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(function(response) {
+        if (response.ok) {
+            // Mostrar mensaje de éxito
+            mensajeExito.style.display = 'block';
+            // Limpiar campos
+            contactForm.reset();
+            // Ocultar el mensaje tras 3 segundos
+            setTimeout(function() {
+                mensajeExito.style.display = 'none';
+            }, 3000);
+        } else {
+            alert('Ocurrió un error al enviar el formulario. Inténtalo de nuevo.');
+        }
+    })
+    .catch(function(error) {
+        console.error('Error:', error);
+        alert('No se pudo enviar el formulario.');
     });
+});
